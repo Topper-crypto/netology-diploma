@@ -1,0 +1,81 @@
+- name: Check if GitLab configuration file already exists.
+  stat: path=/etc/gitlab/gitlab.rb
+  register: gitlab_config_file
+
+- name: Check if GitLab is already installed.
+  stat: path=/usr/bin/gitlab-ctl
+  register: gitlab_file
+
+- name: Check if gitlab.pgp file exists.
+  stat: path=/etc/apt/trusted.gpg.d/gitlab.gpg
+  register: gitlab_gpg
+
+- name: Install GitLab dependencies.
+  apt:
+    name: "{{ gitlab_dependencies }}"
+    update_cache: true
+    state: present
+
+- name: Download GitLab repository installation script.
+  shell: curl -fsSL "{{ gpg_key_url }}" | sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/gitlab.gpg  
+  when: not gitlab_gpg.stat.exists
+
+- name: Create gitlab repository file
+  file:
+    path: /etc/apt/sources.list.d/gitlab_gitlab-ce.list
+    state: touch
+  when: not gitlab_file.stat.exists
+
+- name: Install GitLab repository.
+  copy: 
+    dest: /etc/apt/sources.list.d/gitlab_gitlab-ce.list
+    content: | 
+      deb https://packages.gitlab.com/gitlab/gitlab-ce/ubuntu/ focal main 
+      deb-src https://packages.gitlab.com/gitlab/gitlab-ce/ubuntu/ focal main  
+  when: not gitlab_file.stat.exists
+
+- name: Install GitLab
+  package:
+    name: "{{ gitlab_edition }}"
+    state: present
+    update_cache: true
+  when: not gitlab_file.stat.exists
+
+- name: Replace URL through which GitLab will be accessed.
+  lineinfile:
+    path: /etc/gitlab/gitlab.rb
+    search_string: "external_url 'http://gitlab.example.com'"
+    line: "external_url 'http://gitlab.{{ virtual_domain }}'"
+    backup: true
+
+- name: Access to node_exporter to hosts other than localhost
+  lineinfile:
+    path: /etc/gitlab/gitlab.rb
+    search_string: "node_exporter['listen_address']"
+    line: "node_exporter['listen_address'] = '0.0.0.0:9100'"
+    backup: true
+
+- name: Access to Prometheus to hosts other than localhost
+  lineinfile:
+    path: /etc/gitlab/gitlab.rb
+    search_string: "prometheus['listen_address']"
+    line: "prometheus['listen_address'] = '0.0.0.0:9090'"
+    backup: true
+
+- name: modify runner token
+  lineinfile:
+    path: /etc/gitlab/gitlab.rb
+    line: "gitlab_rails['initial_shared_runners_registration_token'] = '{{ reg_runner_token }}'"
+
+- name: modify root password
+  lineinfile:
+    path: /etc/gitlab/gitlab.rb
+    line: "gitlab_rails['initial_root_password'] = '{{ gitlab_pass }}'"
+
+# Start and configure GitLab. Sometimes the first run fails, but after that,
+# restarts fix problems, so ignore failures on this run.
+- name: Reconfigure GitLab (first run).
+  command: >
+    gitlab-ctl reconfigure
+    creates=/var/opt/gitlab/bootstrapped
+  failed_when: false

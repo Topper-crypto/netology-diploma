@@ -1,0 +1,52 @@
+- name: Nginx | Install Nginx Web Server
+  apt:
+    name: nginx
+    state: latest
+    update_cache: true
+  notify:
+    - nginx systemd
+
+- name: Nginx | Create Iptables NAT
+  iptables:
+    table: nat
+    chain: POSTROUTING
+    out_interface: eth0
+    jump: MASQUERADE
+
+- name: Nginx | Enable IPv4 forwarding
+  sysctl:
+    name: net.ipv4.ip_forward
+    value: 1
+    sysctl_set: true
+    state: present
+    reload: true
+
+- name: Nginx | Install IPtables-persistent
+  apt:
+    name: iptables-persistent
+    state: present
+
+- name: Letsencrypt | Install Letsencrypt and certbot
+  include_tasks: lets_certbot.yml
+
+- name: Letsencrypt | Generate a self-signed SSL certificate
+  include_tasks: get_cert.yml
+
+- name: Nginx | Disable default site
+  file:
+    path: /etc/nginx/sites-enabled/default
+    state: absent
+
+- name: Nginx | Import configuration nginx
+  template:
+    src: templates/nginx.conf
+    dest: /etc/nginx/nginx.conf
+    mode: 0644
+
+- name: Nginx | Apply Nginx template
+  template:
+    src: templates/nginx_vhosts.conf
+    dest: /etc/nginx/conf.d/{{ virtual_domain }}.conf
+    mode: 0644
+  notify:
+    - nginx restart service

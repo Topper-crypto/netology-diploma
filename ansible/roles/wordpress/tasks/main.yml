@@ -1,0 +1,92 @@
+- name: Wordpress | Install Nginx Web Server
+  apt:
+    name: nginx
+    state: latest
+    update_cache: true
+  notify:
+    - nginx systemd
+
+- name: Wordpress | Disable default site
+  file:
+    path: /etc/nginx/sites-enabled/default
+    state: absent
+
+- name: Wordpress | Replace default site
+  template:
+    src: templates/nginx.conf
+    dest: /etc/nginx/conf.d/
+    mode: 0644
+  notify:
+    - nginx restart service
+
+- name: Wordpress | Add PHP repository
+  become: true
+  shell: add-apt-repository ppa:ondrej/php -y && apt update
+
+- name: Wordpress | Install PHP Extensions
+  apt:
+    name: "{{ item }}"
+    update_cache: true
+    state: latest
+  with_items: "{{ php_modules }}"
+
+- name: Wordpress | Purge Apache2
+  apt:
+    name: apache2
+    state: absent
+    purge: true
+
+- name: Wordpress | Create document root
+  file:
+    path: "{{ doc_root }}"
+    state: directory
+    owner: "www-data"
+    group: "www-data"
+    mode: '0755'
+
+- name: Wordpress |  Download and unpack latest WordPress
+  unarchive:
+    src: https://wordpress.org/latest.tar.gz
+    dest: "{{ doc_root }}"
+    remote_src: true
+    extra_opts: [--strip-components=1]
+    creates: "{{ doc_root }}/wp-admin"
+
+- name: Wordpress | Set ownership
+  file:
+    path: "{{ doc_root }}"
+    state: directory
+    recurse: true
+    owner: "{{ owner }}"
+    group: "{{ group }}"
+    mode: '0750'
+
+- name: Wordpress | Set permissions for directories
+  shell: "/usr/bin/find {{ doc_root }}/ -type d -exec chmod 755 {} \\;"
+  changed_when: false
+
+- name: Wordpress | Set permissions for files
+  shell: "/usr/bin/find {{ doc_root }}/ -type f -exec chmod 644 {} \\;"
+  changed_when: false
+
+- name: Wordpress | Set up wp-config
+  template:
+    src: "templates/wp-config.php.j2"
+    dest: "{{ doc_root }}/wp-config.php"
+    owner: "{{ owner }}"
+    group: "{{ group }}"
+    mode: '0640'
+
+- name: Wordpress | Install WP-CLI for Runner
+  get_url:
+    url: "{{ wp_cli_phar_url }}"
+    dest: "{{ wp_cli_bin_path }}"
+    force: true
+    owner: root
+    group: root
+    mode: 0755
+
+- name: Wordpress | Restart nginx, in all cases
+  service:
+    name: nginx
+    state: restarted

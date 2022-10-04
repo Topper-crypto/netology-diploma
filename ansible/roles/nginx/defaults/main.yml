@@ -1,0 +1,3 @@
+---
+letsencrypt_email: korovin80@yandex.ru
+nginx_user: www-data

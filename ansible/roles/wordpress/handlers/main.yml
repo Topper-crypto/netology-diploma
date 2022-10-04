@@ -1,0 +1,16 @@
+---
+- name: nginx systemd
+  systemd:
+    name: nginx
+    enabled: true
+    state: started
+
+- name: nginx restart service
+  service:
+    name: nginx
+    state: restarted
+
+- name: nginx reload service
+  service: 
+    name: nginx
+    state: reloaded  

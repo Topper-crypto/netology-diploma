@@ -1,0 +1,9 @@
+- name: Letsencrypt | Install letsencrypt
+  apt:
+    name: letsencrypt
+    state: latest
+
+- name: Letsencrypt | Install python3-certbot-nginx
+  package:
+    name: "python3-certbot-nginx"
+    state: present

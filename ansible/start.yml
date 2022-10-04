@@ -1,0 +1,61 @@
+---
+- hosts: Prephost
+  become: true
+  remote_user: ubuntu
+  roles:
+    - dns
+  tags:
+    - dns
+
+- hosts: nginx
+  become: true
+  remote_user: ubuntu
+  roles:
+    - nginx
+    - nodeexporter
+  tags:
+    - nginx
+
+- hosts: database
+  become: true
+  remote_user: ubuntu
+  roles:
+    - mysql
+    - nodeexporter  
+
+- hosts: wordpress
+  become: true
+  remote_user: ubuntu
+  roles:
+    - wordpress
+    - nodeexporter
+  tags:
+    - wordpress
+
+- hosts: gitlab
+  become: true
+  remote_user: ubuntu
+  roles:
+    - gitlab
+  tags:
+    - gitlab
+
+- hosts: runner
+  become: true
+  remote_user: ubuntu
+  roles: 
+    - runner
+    - nodeexporter
+  tags:
+    - runner
+      
+- hosts: mon
+  become: true
+  remote_user: ubuntu
+  roles:
+    - monitoring
+    - nodeexporter
+  tags:
+    - monitoring
+
+

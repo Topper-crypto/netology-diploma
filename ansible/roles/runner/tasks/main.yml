@@ -1,0 +1,47 @@
+- name: Download GitLab repository installation script.
+  get_url:
+    url: "{{ gitlab_runner_script_url }}"
+    dest: /tmp/gitlab_install_repository.sh
+    mode: 750
+
+- name: Install GitLab repository.
+  command:
+    cmd: /tmp/gitlab_install_repository.sh
+  changed_when: false
+
+- name: Install GitLab runner
+  package:
+    name: "gitlab-runner"
+    state: present
+
+- name: register runner
+  become: true
+  command:
+    cmd: >
+      gitlab-runner register --non-interactive
+      --url {{ gitlab_runner_url }}
+      --registration-token {{ reg_runner_token }}
+      --executor {{ gitlab_runner_executor }}
+      --description "Runner"
+      --tag-list deployment
+
+- name: Add gitlab-runner user to sudoers
+  user:
+    name: gitlab-runner
+    groups: sudo
+    append: true
+    state: present
+
+- name: Allow gitlab-runner user to have passwordless sudo
+  lineinfile:
+    dest: /etc/sudoers
+    state: present
+    regexp: '^gitlab-runner'
+    line: 'gitlab-runner ALL=(ALL) NOPASSWD: ALL'
+    validate: 'visudo -cf %s'
+
+- name: Start and enable gitlab-runner
+  service:
+    name: gitlab-runner
+    state: started
+    enabled: true

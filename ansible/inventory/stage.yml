@@ -1,0 +1,73 @@
+---
+Prephost:
+  hosts:
+    62.84.114.154:
+      ansible_ssh_common_args: "-o StrictHostKeyChecking=no"
+    db01:
+      ansible_ssh_common_args: "-o StrictHostKeyChecking=no -J ubuntu@62.84.114.154"
+    db02:
+      ansible_ssh_common_args: "-o StrictHostKeyChecking=no -J ubuntu@62.84.114.154"
+    app:
+      ansible_ssh_common_args: "-o StrictHostKeyChecking=no -J ubuntu@62.84.114.154"
+    gitlab:
+      ansible_ssh_common_args: "-o StrictHostKeyChecking=no -J ubuntu@62.84.114.154"
+    monitoring:
+      ansible_ssh_common_args: "-o StrictHostKeyChecking=no -J ubuntu@62.84.114.154"
+    runner:
+      ansible_ssh_common_args: "-o StrictHostKeyChecking=no -J ubuntu@62.84.114.154"
+  vars:
+    virtual_domain: korovin80.site
+    ip_nginx: 192.168.101.20
+    ip_db01: 192.168.101.25
+    ip_db02: 192.168.102.20
+    ip_app: 192.168.101.21
+    ip_gitlab: 192.168.101.22
+    ip_mon: 192.168.101.24
+    ip_runner: 192.168.101.23
+nginx:
+  hosts:
+    62.84.114.154:
+      ansible_connection: ssh
+      ansible_user: ubuntu
+      ansible_ssh_common_args: "-o StrictHostKeyChecking=no"
+      virtual_domain: korovin80.site
+database:
+  hosts:
+    db01:
+      ansible_connection: ssh
+      ansible_user: ubuntu
+      ansible_ssh_common_args: "-o StrictHostKeyChecking=no -J ubuntu@62.84.114.154"
+      mysql_replication_role: 'master'
+      mysql_server_id: 1
+    db02:
+      ansible_connection: ssh
+      ansible_user: ubuntu
+      ansible_ssh_common_args: "-o StrictHostKeyChecking=no -J ubuntu@62.84.114.154"
+      mysql_replication_role: 'slave'
+      mysql_server_id: 2
+wordpress:
+  hosts:
+    app:
+      ansible_connection: ssh
+      ansible_user: ubuntu
+      ansible_ssh_common_args: "-o StrictHostKeyChecking=no -J ubuntu@62.84.114.154"
+      virtual_domain: korovin80.site
+git:
+  hosts:
+    gitlab:
+      ansible_connection: ssh
+      ansible_user: ubuntu
+      ansible_ssh_common_args: "-o StrictHostKeyChecking=no -J ubuntu@62.84.114.154"
+      virtual_domain: korovin80.site
+mon:
+  hosts:
+    monitoring:
+      ansible_connection: ssh
+      ansible_user: ubuntu
+      ansible_ssh_common_args: "-o StrictHostKeyChecking=no -J ubuntu@62.84.114.154"
+gitrunner:
+  hosts:
+    runner:
+      ansible_connection: ssh
+      ansible_user: ubuntu
+      ansible_ssh_common_args: "-o StrictHostKeyChecking=no -J ubuntu@62.84.114.154"
