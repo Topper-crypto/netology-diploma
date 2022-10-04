@@ -40,7 +40,7 @@ topper@otus:~/netology-graduate$ terraform workspace list
 
 ## Установка Gitlab CE и Gitlab Runner
 
-Была проведена настройка CI/CD системы для автоматического развертывания приложения при изменении кода.
+Была проведена настройка [CI/CD системы](https://github.com/Topper-crypto/netology-diploma/tree/master/ci-cd) для автоматического развертывания приложения при изменении кода.
 
 ## Установка Prometheus, Alert Manager, Node Exporter и Grafana
 
@@ -51,25 +51,45 @@ topper@otus:~/netology-graduate$ terraform workspace list
 ## Скриншоты выполнения дипломной работы:
 
 * Основная инфраструктура
+
 ![](https://github.com/Topper-crypto/netology-diploma/blob/master/img/ComputeCloud.png)
+
 * VPC с подсетями в разных зонах доступности
+
 ![](https://github.com/Topper-crypto/netology-diploma/blob/master/img/VirtualPrivateCloud.png)
+
 * DNS Записи
+
 ![](https://github.com/Topper-crypto/netology-diploma/blob/master/img/CloudDNS.png)
+
 * Основной сайт, после выполнения роли `wordpress`
+
 ![](https://github.com/Topper-crypto/netology-diploma/blob/master/img/WordPress.png)
+
 * Настроенная репликация `mysql`
+
 ![](https://github.com/Topper-crypto/netology-diploma/blob/master/img/Untitled.png)
+
 * Prometheus
+
 ![](https://github.com/Topper-crypto/netology-diploma/blob/master/img/Prometheus.png)
 * Ноды в Prometheus
 ![](https://github.com/Topper-crypto/netology-diploma/blob/master/img/Untitled.png)
+
 * Alertmanager
+
 ![](https://github.com/Topper-crypto/netology-diploma/blob/master/img/Untitled.png)
+
 * Grafana 
+
 ![](https://github.com/Topper-crypto/netology-diploma/blob/master/img/Untitled.png)
+
 * Dashboards Node Exporter
+
 ![](https://github.com/Topper-crypto/netology-diploma/blob/master/img/Untitled.png)
+
 * Gitlab и Gitlab Runner
+
 ![](https://github.com/Topper-crypto/netology-diploma/blob/master/img/Untitled.png)
+
 ![](https://github.com/Topper-crypto/netology-diploma/blob/master/img/Runners.png)
