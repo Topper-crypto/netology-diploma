@@ -96,4 +96,4 @@ topper@otus:~/netology-graduate$ terraform workspace list
 
 ![img](../img/Runners.png)
 
-![img](../img/Untitled.png)
+![img](./img/Runners.png)
