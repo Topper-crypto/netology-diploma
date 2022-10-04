@@ -73,7 +73,9 @@ topper@otus:~/netology-graduate$ terraform workspace list
 * Prometheus
 
 ![](https://github.com/Topper-crypto/netology-diploma/blob/master/img/Prometheus.png)
+
 * Ноды в Prometheus
+
 ![](https://github.com/Topper-crypto/netology-diploma/blob/master/img/Untitled.png)
 
 * Alertmanager
