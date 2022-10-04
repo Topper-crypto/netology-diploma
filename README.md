@@ -93,5 +93,5 @@ topper@otus:~/netology-graduate$ terraform workspace list
 * Gitlab и Gitlab Runner
 
 ![](https://github.com/Topper-crypto/netology-diploma/blob/master/img/Untitled.png)
-
+/
 ![img](../img/Runners.png)
