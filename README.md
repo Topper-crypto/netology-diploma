@@ -17,13 +17,17 @@
 
 ## Регистрация доменного имени
 
-Был зарегистрирован домен `fr` на reg.ru
+Был зарегистрирован домен `korovin80.site` на reg.ru
 
 ## Создание инфраструктуры
 
-1. Был выбран альтернативный вариант(В нашем случае и ситуации - единственный): S3 bucket в YC аккаунте.
-2. Настроили `workspaces`. Воспользовались альтернативным вариантом и используем один workspace, назвав его `stage`.
-img
+1. Был выбран альтернативный вариант: S3 bucket в YC аккаунте.
+2. Настроили `workspaces`. Воспользовались альтернативным вариантом и использовали один workspace, назвав его `stage`.
+```yaml
+topper@otus:~/netology-graduate$ terraform workspace list
+  default
+* stage
+```
 3. Домен был делегирован под управление `ns1.yandexcloud.net` и `ns2.yandexcloud.net`.
-4. Вся конфигурация инфраструктуры с комментариями находится в папке [terraform](https://github.com/Topper-crypto/netology_diplom/tree/main/terraform).
-5. Все Ansible роли находятся в папке [ansible](https://github.com/Topper-crypto/netology_diplom/tree/main/ansible).
+4. Вся конфигурация инфраструктуры с комментариями находится в папке [terraform](https://github.com/Topper-crypto/netology-diploma/tree/master/terraform).
+5. Все Ansible роли находятся в папке [ansible](https://github.com/Topper-crypto/netology-diploma/tree/master/ansible).
