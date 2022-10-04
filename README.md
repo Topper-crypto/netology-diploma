@@ -94,4 +94,4 @@ topper@otus:~/netology-graduate$ terraform workspace list
 
 ![](https://github.com/Topper-crypto/netology-diploma/blob/master/img/Untitled.png)
 
-![](../img/Runners.png)
+![img](../img/Runners.png)
