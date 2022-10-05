@@ -90,11 +90,11 @@ topper@otus:~/netology-graduate$ terraform workspace list
 
 * Grafana 
 
-![](https://github.com/Topper-crypto/netology-diploma/blob/master/img/Untitled.png)
+![img](./img/Grafana.png)
 
 * Dashboards Node Exporter
 
-![](https://github.com/Topper-crypto/netology-diploma/blob/master/img/Untitled.png)
+![img](./img/Grafana2.png)
 
 * Gitlab и Gitlab Runner
 
