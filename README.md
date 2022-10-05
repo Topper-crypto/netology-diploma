@@ -41,7 +41,7 @@ topper@otus:~/netology-graduate$ terraform workspace list
 
 ## Установка Gitlab CE и Gitlab Runner
 
-Была проведена настройка [CI/CD системы](https://github.com/Topper-crypto/netology-diploma/tree/master/ci-cd) для автоматического развертывания приложения при изменении кода, [комментарии](https://github.com/Topper-crypto/netology-diploma/blob/master/CI-CD.md).
+Была проведена настройка [CI/CD системы](https://github.com/Topper-crypto/netology-diploma/tree/master/ci-cd) для автоматического развертывания приложения при изменении кода, [комментарии](https://github.com/Topper-crypto/netology-diploma/blob/master/CI-CD.md)..
 
 ## Установка Prometheus, Alert Manager, Node Exporter и Grafana
 
