@@ -68,7 +68,7 @@ topper@otus:~/netology-graduate$ terraform workspace list
 
 * Настроенная репликация `mysql`
 
-![](https://github.com/Topper-crypto/netology-diploma/blob/master/img/Untitled.png)
+![img](./img/MySQL.png)
 
 * Prometheus
 
