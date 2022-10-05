@@ -2,3 +2,5 @@
   import_tasks: prometheus.yml
 - name: Install and configure Grafana
   import_tasks: grafana.yml
+- name: Install and configure Alertmanager
+  import_tasks: alertmanager.yml

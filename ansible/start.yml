@@ -22,6 +22,8 @@
   roles:
     - mysql
     - nodeexporter  
+  tags:
+    - database
 
 - hosts: wordpress
   become: true
