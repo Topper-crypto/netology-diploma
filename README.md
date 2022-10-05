@@ -64,11 +64,14 @@ topper@otus:~/netology-graduate$ terraform workspace list
 
 * Основной сайт, после выполнения роли `wordpress`
 
-![](https://github.com/Topper-crypto/netology-diploma/blob/master/img/WordPress.png)
+![img](./img/WordPress2.png)
+
+![img](./img/WordPress.png)
 
 * Настроенная репликация `mysql`
 
 ![img](./img/MySQL2.png)
+
 ![img](./img/MySQL.png)
 
 * Prometheus
