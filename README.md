@@ -29,7 +29,7 @@ topper@otus:~/netology-graduate$ terraform workspace list
 * stage
 ```
 3. Домен был делегирован под управление `ns1.yandexcloud.net` и `ns2.yandexcloud.net`.
-4. Вся конфигурация инфраструктуры с комментариями находится в папке [terraform](https://github.com/Topper-crypto/netology-diploma/tree/master/terraform).
+4. Вся конфигурация инфраструктуры находится в папке [terraform](https://github.com/Topper-crypto/netology-diploma/tree/master/terraform), [комментарии](https://github.com/Topper-crypto/netology-diploma/blob/master/Terraform.md).
 5. Все Ansible роли находятся в папке [ansible](https://github.com/Topper-crypto/netology-diploma/tree/master/ansible).
 
 ## Разработка Ansible ролей
