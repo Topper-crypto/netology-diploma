@@ -52,15 +52,15 @@ topper@otus:~/netology-graduate$ terraform workspace list
 
 * Основная инфраструктура
 
-![](https://github.com/Topper-crypto/netology-diploma/blob/master/img/ComputeCloud.png)
+![img](./img/ComputeCloud.png)
 
 * VPC с подсетями в разных зонах доступности
 
-![](https://github.com/Topper-crypto/netology-diploma/blob/master/img/VirtualPrivateCloud.png)
+![img](./img/VirtualPrivateCloud.png)
 
 * DNS Записи
 
-![](https://github.com/Topper-crypto/netology-diploma/blob/master/img/CloudDNS.png)
+![img](./img/CloudDNS.png)
 
 * Основной сайт, после выполнения роли `wordpress`
 
@@ -76,11 +76,11 @@ topper@otus:~/netology-graduate$ terraform workspace list
 
 * Prometheus
 
-![](https://github.com/Topper-crypto/netology-diploma/blob/master/img/Prometheus.png)
+![img](./img/Prometheus.png)
 
 * Ноды в Prometheus
 
-![](https://github.com/Topper-crypto/netology-diploma/blob/master/img/Untitled.png)
+![img](./img/Targets.png)
 
 * Alertmanager
 
