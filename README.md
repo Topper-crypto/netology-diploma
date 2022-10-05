@@ -30,23 +30,22 @@ topper@otus:~/netology-graduate$ terraform workspace list
 ```
 3. Домен был делегирован под управление `ns1.yandexcloud.net` и `ns2.yandexcloud.net`.
 4. Вся конфигурация инфраструктуры находится в папке [terraform](https://github.com/Topper-crypto/netology-diploma/tree/master/terraform), [комментарии](https://github.com/Topper-crypto/netology-diploma/blob/master/Terraform.md).
+
 5. Все Ansible роли находятся в папке [ansible](https://github.com/Topper-crypto/netology-diploma/tree/master/ansible).
+
+Подробне описание ролей [по ссылке](https://github.com/Topper-crypto/netology-diploma/blob/master/Ansible.md).
 
 ## Разработка Ansible ролей
 
 Были разработаны роли для установки Nginx, LetsEncrypt, кластера MySQL, WordPress
 
-Подробне описание ролей [по ссылке](https://github.com/Topper-crypto/netology-diploma/blob/master/Ansible.md)
-
 ## Установка Gitlab CE и Gitlab Runner
 
-Была проведена настройка [CI/CD системы](https://github.com/Topper-crypto/netology-diploma/tree/master/ci-cd) для автоматического развертывания приложения при изменении кода.
+Была проведена настройка [CI/CD системы](https://github.com/Topper-crypto/netology-diploma/tree/master/ci-cd) для автоматического развертывания приложения при изменении кода, [комментарии](https://github.com/Topper-crypto/netology-diploma/blob/master/CI-CD.md).
 
 ## Установка Prometheus, Alert Manager, Node Exporter и Grafana
 
-Были разработаны роли для установки Prometheus, Alert Manager и Grafana
-
-Подробне описание ролей [по ссылке](https://github.com/Topper-crypto/netology-diploma/blob/master/Ansible.md)
+Были разработаны роли для установки Prometheus, Alert Manager и Grafana.
 
 ## Скриншоты выполнения дипломной работы:
 
