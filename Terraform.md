@@ -1,15 +1,15 @@
 # Файлы Terraform
 
 * app.tf - Установка Wordpress.
-* Cluster_db.tf - Установка кластера mysql.
+* database.tf - Установка кластера mysql.
 * dns.tf - Создание DNS-зон в YC.
-* gitlab_runner - Установка GitLab и Runner.
+* gitlab.tf - Установка GitLab и Runner.
 * inventory.tf - Создание inventory.yml для использования в ansible.
-* mon.tf - Установка стека мониторинга.
+* monitoring.tf - Установка стека мониторинга.
 * network.tf - Создание VPC с подсетями в разных зонах доступности.
 * nginx.tf - Установка Nginx.
 * provider.tf - Файл провайдера и его настройки.
-* variables,tf - Файл с описанием переменных и значениями по дефолту.
+* variables.tf - Файл с описанием переменных и значениями по дефолту.
 
 # Обязательные переменные для заполнения
 
