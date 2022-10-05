@@ -86,6 +86,8 @@ topper@otus:~/netology-graduate$ terraform workspace list
 
 ![img](./img/Alertmanager.png)
 
+![img](./img/Alertmanager2.png)
+
 * Grafana 
 
 ![](https://github.com/Topper-crypto/netology-diploma/blob/master/img/Untitled.png)
