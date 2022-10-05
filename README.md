@@ -68,6 +68,7 @@ topper@otus:~/netology-graduate$ terraform workspace list
 
 * Настроенная репликация `mysql`
 
+![img](./img/MySQL2.png)
 ![img](./img/MySQL.png)
 
 * Prometheus
