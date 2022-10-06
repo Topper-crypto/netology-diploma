@@ -59,9 +59,11 @@ topper@otus:~/netology-graduate$ terraform workspace list
 
 ![img](./img/CloudDNS.png)
 
-* Основной сайт, после выполнения роли `wordpress`
+* Тема по умолчанию WordPress
 
 ![img](./img/WordPress2.png)
+
+* Основной сайт, после выполнения роли `wordpress`
 
 ![img](./img/WordPress.png)
 
